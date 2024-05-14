@@ -1,7 +1,6 @@
 # Brophy's Game Of Life
 
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/Chris-B33/Brophys-Game-Of-Life">
-<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Chris-B33/Brophys-Game-Of-Life">
+<img alt="GitHub forks" src="https://img.shields.io/github/forks/Chris-B33/Brophys-Game-Of-Life"> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Chris-B33/Brophys-Game-Of-Life">
 
 ## Description
 This project was an introduction to my own private study of Machine Learning (ML) outside of education. <br>
