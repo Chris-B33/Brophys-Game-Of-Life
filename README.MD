@@ -8,20 +8,19 @@ Conway's Game of Life (CGOL) is an interesting piece of cellular automota and I 
 I wanted to develop my own informal understanding of ML during the summer before continuing my formal education in the subject in September.
 
 ## Installation
-Requirements:
+### Requirements
 - Pygame
 - Tensorflow
 
 Install each of the above libraries.<br> 
-
 Then run main.py.
 
 ## Screens
 
-RuleScreen:
+### RuleScreen
 Click the cells to switch them on or off. Clicking the input cell (left) will switch it from being alive to dead or vice versa. Same goes for the output cell (right).
 
-GameScreen:
+### GameScreen
 Add cells like normal CGOL. If inputs were made on the RuleScreen, the ML model will be used to determine a cells state. Otherwise, standard CGOL rules will apply.
 
 ## Approach
