@@ -7,7 +7,6 @@ class RulesetModel:
         self.rule_count = rule_count
         self.alive_rule_limit = alive_rule_limit
         self.model = None
-        self.inputs = self.create_dataset()
 
     def create_dataset(self):
         inputs = []
@@ -41,8 +40,10 @@ class RulesetModel:
         )
 
     def train_model(self):
-        keys = tf.convert_to_tensor([i[0] for i in self.inputs])
-        values = tf.convert_to_tensor([i[1] for i in self.inputs])
+        inputs = self.create_dataset()
+
+        keys = tf.convert_to_tensor([i[0] for i in inputs])
+        values = tf.convert_to_tensor([i[1] for i in inputs])
 
         print(f"[{datetime.datetime.now()}]: Training model...")
         self.model.fit(keys, values, epochs=10)
