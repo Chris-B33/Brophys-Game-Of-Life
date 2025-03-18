@@ -8,9 +8,5 @@ Conway's Game of Life (CGOL) is an interesting piece of cellular automota and I 
 This will generate as many rule states as defined in "config.ini" and train a model on this dataset.
 
 ## Installation
-### Requirements
-- Pygame
-- Tensorflow
-
-Install each of the above libraries.<br> 
+Run the command "pip install -r requirements.txt" 
 Then run main.py.
