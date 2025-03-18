@@ -7,15 +7,12 @@ class GameOfLife:
         (-1, 1), (0, 1), (1, 1)
     )
 
-
     def __init__(self, model) -> None:
         self.model = model
         self.resetGrid()
 
-
     def resetGrid(self) -> None:
         self.cells = {}
-
 
     def addCell(self, x: int, y: int) -> None:
         if y not in self.cells:
@@ -24,14 +21,12 @@ class GameOfLife:
         elif x not in self.cells[y]:
             self.cells[y].add(x)
 
-
     def delCell(self, x: int, y: int) -> None:
         if (y in self.cells and x in self.cells[y]):
             self.cells[y].remove(x)
  
             if not self.cells[y]:
                 del self.cells[y]
-
 
     def getAliveAndAdjacentCells(self) -> set:
         all_coordinates = set()
@@ -44,7 +39,6 @@ class GameOfLife:
 
         return all_coordinates
     
-
     def getCellNeighbourStates(self, x: int, y: int) -> list:
         neighbours = []
 
@@ -55,7 +49,6 @@ class GameOfLife:
                 neighbours.append(False)
 
         return neighbours
-
 
     def updateCells(self) -> None:
         nextTick = {}
@@ -68,7 +61,7 @@ class GameOfLife:
 
             cells = tf.convert_to_tensor([neighbours + [alive]])
 
-            if self.model.predict(cells):
+            if bool(self.model.predict(cells).flatten()[0] > 0.5):
                 if y not in nextTick:
                     nextTick[y] = set([x])
     

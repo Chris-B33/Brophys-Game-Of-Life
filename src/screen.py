@@ -19,13 +19,11 @@ CELL_BUTTON_WIDTH = SCREEN_WIDTH / 7
 OPTION_BUTTON_WIDTH = SCREEN_WIDTH / 4
 OPTION_BUTTON_HEIGHT = SCREEN_WIDTH / 12
 
-
 class GameScreen(GameOfLife):
     def __init__(self, model) -> None:
         super().__init__(model)
         self.gridSize = 20
         self.engineLoop()
-
 
     def updateScreen(self) -> None:
         self.cellSize = SCREEN_WIDTH / self.gridSize
@@ -36,12 +34,10 @@ class GameScreen(GameOfLife):
                 color = COLOR_ALIVE if (row in self.cells and col in self.cells[row]) else COLOR_BG
                 pygame.draw.rect(SCREEN, color, (col * self.cellSize, row * self.cellSize, self.cellSize - 1, self.cellSize - 1))
 
-    
     def advanceOneState(self):
         self.updateCells()
         self.updateScreen()
         pygame.display.update()
-
 
     def engineLoop(self) -> None:
         running = False
