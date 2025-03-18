@@ -3,9 +3,16 @@
 <img alt="GitHub forks" src="https://img.shields.io/github/forks/Chris-B33/Brophys-Game-Of-Life"> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Chris-B33/Brophys-Game-Of-Life">
 
 ## Description
-This project was an introduction to my own private study of Machine Learning (ML) outside of education. <br>
-Conway's Game of Life (CGOL) is an interesting piece of cellular automota and I wanted to put my own spin on it. <br>
-This will generate as many rule states as defined in "config.ini" and train a model on this dataset.
+This project was an introduction to my own private study of Machine Learning (ML) outside of education.
+Conway's Game of Life (CGOL) is an interesting piece of cellular automota and I wanted to put my own spin on it.
+<br>
+Conway's original version had a set ruleset:
+- An alive cell with less than 2 neighbours dies to "underpopulation".
+- An alive cell with more than 3 neighbours dies to "overpopulation".
+- A dead cell with exactly 3 neighbours becomes alive.
+<br>
+
+My version generates as many random rule states as defined in "config.ini" and train a model to run on this dataset. So the ruleset changes every time.
 
 ## Installation
 Run the command "pip install -r requirements.txt" 
