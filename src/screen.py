@@ -23,9 +23,7 @@ OPTION_BUTTON_HEIGHT = SCREEN_WIDTH / 12
 class GameScreen(GameOfLife):
     def __init__(self, model) -> None:
         super().__init__(model)
-        self.gridSize = 20
         self.engineLoop()
-
 
     def updateScreen(self) -> None:
         self.cellSize = SCREEN_WIDTH / self.gridSize
@@ -36,12 +34,10 @@ class GameScreen(GameOfLife):
                 color = COLOR_ALIVE if (row in self.cells and col in self.cells[row]) else COLOR_BG
                 pygame.draw.rect(SCREEN, color, (col * self.cellSize, row * self.cellSize, self.cellSize - 1, self.cellSize - 1))
 
-    
     def advanceOneState(self):
         self.updateCells()
         self.updateScreen()
         pygame.display.update()
-
 
     def engineLoop(self) -> None:
         running = False
@@ -68,5 +64,5 @@ class GameScreen(GameOfLife):
                         
                 if pygame.mouse.get_pressed()[0]:
                     pos = pygame.mouse.get_pos()
-                    self.addCell(pos[0] // self.cellSize, pos[1] // self.cellSize)
+                    self.updateCell(int(pos[0] // self.cellSize), int(pos[1] // self.cellSize))
 
