@@ -1,4 +1,4 @@
-import tensorflow as tf
+import torch
 
 class GameOfLife:
     ADJACENT = (
@@ -59,12 +59,10 @@ class GameOfLife:
             alive = True if y in self.cells and x in self.cells[y] else False
             neighbours = self.getCellNeighbourStates(x, y)
 
-            cells = tf.convert_to_tensor([neighbours + [alive]])
-
-            if bool(self.model.predict(cells).flatten()[0] > 0.5):
+            cells = torch.tensor([neighbours + [alive]], dtype=torch.float32)
+            if torch.sigmoid(self.model(cells)).item() > 0.5:
                 if y not in nextTick:
                     nextTick[y] = set([x])
-    
                 elif x not in nextTick[y]:
                     nextTick[y].add(x)
 

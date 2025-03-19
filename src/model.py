@@ -1,12 +1,30 @@
-import tensorflow as tf
 import random
-import datetime
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
 
-class RulesetModel:
+class Model(nn.Module):
+    def __init__(self):
+        super(Model, self).__init__()
+        self.fc1 = nn.Linear(9, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.fc3 = nn.Linear(32, 1)
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        x = self.relu(self.fc1(x))
+        x = self.fc2(x)
+        x = self.fc3(x)
+        return x
+
+class RulesetTrainer:
     def __init__(self, rule_count, alive_rule_limit):
         self.rule_count = rule_count
         self.alive_rule_limit = alive_rule_limit
-        self.model = None
+        self.model = Model()
+        self.criterion = nn.BCEWithLogitsLoss()
+        self.optimizer = optim.Adam(self.model.parameters())
 
     def create_dataset(self):
         inputs = []
@@ -25,28 +43,23 @@ class RulesetModel:
 
         return inputs
 
-    def create_model(self):
-        self.model = tf.keras.Sequential([
-            tf.keras.layers.Input((9,)),
-            tf.keras.layers.Dense(64, activation='relu'),
-            tf.keras.layers.Dense(32),
-            tf.keras.layers.Dense(1)
-        ])
-
-        self.model.compile(
-            optimizer='adam',
-            loss=tf.keras.losses.BinaryCrossentropy(from_logits=False),
-            metrics=['BinaryAccuracy']
-        )
-
     def train_model(self):
         inputs = self.create_dataset()
 
-        keys = tf.convert_to_tensor([i[0] for i in inputs])
-        values = tf.convert_to_tensor([i[1] for i in inputs])
+        keys = torch.tensor([i[0] for i in inputs], dtype=torch.float32)
+        values = torch.tensor([i[1] for i in inputs], dtype=torch.float32).unsqueeze(1)
 
-        print(f"[{datetime.datetime.now()}]: Training model...")
-        self.model.fit(keys, values, epochs=10)
+        dataset = TensorDataset(keys, values)
+        dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
+
+        self.model.train()
+        for epoch in range(10):
+            for batch_keys, batch_values in dataloader:
+                self.optimizer.zero_grad()
+                outputs = self.model(batch_keys)
+                loss = self.criterion(outputs, batch_values)
+                loss.backward()
+                self.optimizer.step()
 
     def get_model(self):
         return self.model
