@@ -15,10 +15,11 @@ Conway's original version had a set ruleset:
 My version generates as many random rule states as defined in "config.ini" and train a model to run on this dataset. So the ruleset changes every time.
 
 ## Example
-This is how a "glider", a classic shape in CGOL interacts in 2 different rulsets of my version: <br>
+This is how a 'glider', a classic pattern in CGOL, behaves under two different sets of automatically generated rules in my version: <br>
 
-<img src="./assets/example1.gif" width="150" height="150"/>
-<img src="./assets/example2.gif" width="150" height="150"/>
+| Example 1 | Example 2 |
+|-----------|-----------|
+| <img src="./assets/example1.gif" width="150" height="150"/> | <img src="./assets/example2.gif" width="150" height="150"/> |
 
 ## Installation
 - Run the command "pip install -r requirements.txt".
