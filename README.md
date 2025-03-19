@@ -17,3 +17,8 @@ My version generates as many random rule states as defined in "config.ini" and t
 ## Installation
 Run the command "pip install -r requirements.txt" 
 Then run main.py.
+
+## Controls
+- "r" => Resets the grid to empty.
+- "o" => Advances the grid by one state
+- "space" => Sets the grid to 'running'. It will continue to update automatically. 
