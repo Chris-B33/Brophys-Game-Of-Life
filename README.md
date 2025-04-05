@@ -12,7 +12,8 @@ Conway's original version had a set ruleset:
 - A dead cell with exactly 3 neighbours becomes alive.
 <br>
 
-My version generates as many random rule states as defined in "config.ini" and then trains a model to run on that dataset. Hence, the ruleset changes every time.
+My version generates as many random rule states as defined in "config.ini" and then trains a model to run on that dataset. <br>
+Hence, the ruleset <i><b>changes every time</b></i>.
 
 ## Example
 This is how a 'glider', a classic pattern in CGOL, behaves under two different sets of automatically generated rules in my version: <br>
