@@ -1,7 +1,5 @@
 # Brophy's Game Of Life
 
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/Chris-B33/Brophys-Game-Of-Life"> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Chris-B33/Brophys-Game-Of-Life">
-
 ## Description
 This project was an introduction to my own private study of Machine Learning outside of education.
 Conway's Game of Life (CGOL) is an interesting piece of cellular automota and I wanted to put my own spin on it.
